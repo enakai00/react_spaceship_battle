@@ -1,4 +1,4 @@
-# React Spaceship Buttle Game
+# React Spaceship Battle Game
 
 Disclaimer: This is not an official Google product.
 
