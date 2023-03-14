@@ -177,28 +177,26 @@ const game = async (screen, refresh, keyPress) => {
 
 
 export const Game = (props) => {
-  // Fixed boilar plate
+  // Define keys used in the game.
+  const keys = ["s", "z", "j", "l"];
+
+  // The following part is a fixed boilarplate. Just leave as is.
   const xSize = 40;
   const ySize = 24;
   const screenRef = useRef(getScreen(xSize, ySize));
   const screen = screenRef.current;
+  const keyPressRef = useRef({});
+  const keyPress = keyPressRef.current;
   // eslint-disable-next-line
   const [dummyState, setDummyState] = useState([]);
   const refresh = () => { setDummyState([]); }
-  const keyPressRef = useRef({});
-  const keyPress = keyPressRef.current;
-  //
-
-  const keys = ["s", "z", "j", "l"];
 
   useEffect(
     () => {game(screen, refresh, keyPress)}, [screen, keyPress]
   );
 
   const element = (
-    <>
-      <GameBackend keys={keys} keyPress={keyPress} screen={screen}/>
-    </>
+    <GameBackend keys={keys} keyPress={keyPress} screen={screen}/>
   );
 
   return element;
