@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Stack, Box, Button } from "@chakra-ui/react";
 
-import { Game } from "./Game";
+import { Main } from "../Main";
 
 
 export const Layout = (props) => {
@@ -15,7 +15,7 @@ export const Layout = (props) => {
     <Container maxW='1000' paddingTop="5">
       <Stack spacing="1">
         <Box>
-          <Game key={gameID}/>
+          <Main key={gameID}/>
         </Box>
       <Box>
         <Button colorScheme="red" size="sm"

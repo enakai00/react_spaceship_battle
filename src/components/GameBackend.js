@@ -37,18 +37,15 @@ export const clearScreen = (screen) => {
   }
 }
 
-export const toZenkaku = (str) => {
-  return str.replace(/[A-Za-z0-9]/g, function(s) {
-      return String.fromCharCode(s.charCodeAt(0) + 0xFEE0);
-  });
-}
-
-export const print = (screen, x, y, s, color="white", bgColor="black") => {
+export const print = (screen, x, y, str, color="white", bgColor="black") => {
   const ySize = screen.length;
   const xSize = screen[0].length;
-  for (let dx = 0; dx < s.length; dx++) {
+  str = String(str).replace(/[!-~]/g, (all) => {
+		return String.fromCharCode(all.charCodeAt(0) + 0xFEE0);
+	});
+  for (let dx = 0; dx < str.length; dx++) {
     if (x >=0 && x < xSize && y >=0 && y < ySize) {
-      screen[y][x+dx].char = s.slice(dx, dx+1);
+      screen[y][x+dx].char = str.slice(dx, dx+1);
       screen[y][x+dx].color = color;
       screen[y][x+dx].bgColor = bgColor;
     }
